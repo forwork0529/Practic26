@@ -2,6 +2,7 @@ package main
 
 import (
 	myInOut "NewPipeLine/cmd"
+	fl "NewPipeLine/feature_logging"
 	fu "NewPipeLine/functions"
 	"NewPipeLine/steps"
 	"sync"
@@ -32,6 +33,10 @@ var releaseBuffPer int // период опустошения выходного
 
 
 func main(){
+
+	// Функции стартующие и завершающие логирование
+	fl.LoggerStart()
+	defer fl.LoggerStop()
 
 	// Для удобства введены ограничения: минимальный размер буфера 1, минимальное время опустошения буфера 1
 	// минимальное количество потоков 1.
